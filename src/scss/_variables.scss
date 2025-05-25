@@ -1,0 +1,48 @@
+// _variables.scss
+
+// الألوان الأساسية
+$primary-gradient: linear-gradient(135deg, #ff7b00 0%, #ff0058 100%);
+$secondary-gradient: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+
+// نظام الألوان
+$black: #1a1a1a;
+$white: #ffffff;
+$background: #f8f5f0;
+$gray-line: #e0e0e0;
+$orange: #ff7b00;
+$pink: #ff0058;
+$gray-light: #f5f5f5;
+$gray-medium: #898989;
+$gray-dark: #333333;
+$success: #4caf50;
+$warning: #ff9800;
+$error: #f44336;
+
+// الأبعاد والتخطيط
+$container-width: 90%;
+$max-container-width: 1400px;
+$border-radius: 12px;
+$border-radius-sm: 8px;
+$border-radius-lg: 16px;
+$box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+$box-shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.15);
+
+// الحركات والانتقالات
+$duration: 0.3s;
+$transition: all $duration cubic-bezier(0.25, 0.8, 0.25, 1);
+$transition-fast: all 0.15s ease-in-out;
+$transition-slow: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+// الخطوط
+$font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$font-secondary: 'Roboto', sans-serif;
+$font-size-base: 16px;
+$font-size-sm: 14px;
+$font-size-lg: 18px;
+
+// نقاط التوقف للتصميم المتجاوب
+$breakpoint-xs: 480px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 992px;
+$breakpoint-lg: 1200px;
+$breakpoint-xl: 1400px;

@@ -1,0 +1,334 @@
+// _home.scss
+@import './_variables.scss';
+.home-container {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: 'Tajawal', sans-serif;
+}
+
+/* هيدر رئيسي مع شريط تنقل */
+.hero-header {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+              url('../assets/img/bekoCover.png  ') center/cover;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  position: relative;
+
+  .hero-content {
+    max-width: 800px;
+    padding: 0 20px;
+    
+    h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      animation: fadeInUp 1s ease;
+      color: white;
+      span {
+        color: #ff7b00;
+      }
+    }
+
+    p {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+      animation: fadeInUp 1s ease 0.3s forwards;
+      opacity: 0;
+      color: white;
+    }
+
+    .cta-button {
+      background: linear-gradient(to right, #ff7b00, #ff0058);
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: fadeInUp 1s ease 0.6s forwards;
+      opacity: 0;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 15px rgba(255, 123, 0, 0.4);
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(255, 123, 0, 0.6);
+      }
+    }
+  }
+}
+
+/* قسم العروض الخاصة */
+.view-button {
+  position: relative;
+  overflow: hidden;
+  
+  &.added {
+    background: #4caf50;
+    
+    &:hover {
+      background: darken(#4caf50, 10%);
+    }
+  }
+  
+  .item-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #ff5722;
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+  }
+}
+.featured-section {
+  padding: 80px 0;
+  background-color: #f8f8f8;
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    
+    h2 {
+      font-size: 2.5rem;
+      color: #333;
+      position: relative;
+      display: inline-block;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: linear-gradient(to right, #ff7b00, #ff0058);
+      }
+    }
+  }
+
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    .featured-item {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: translateY(-10px);
+      }
+
+      .featured-image {
+        height: 250px;
+        overflow: hidden;
+
+        img {
+          padding: 5px;
+          width: 100%;
+          height: 100%;
+          object-fit:contain;
+          transition: transform 0.5s ease;
+        }
+      }
+    
+      &:hover .featured-image img {
+        transform: scale(1.1);
+      }
+
+      .featured-info {
+        padding: 20px;
+        
+        h3 {
+          font-size: 1.4rem;
+          margin-bottom: 10px;
+          color: #333;
+        }
+
+        p {
+          color: #666;
+          margin-bottom: 15px;
+          line-height: 1.6;
+        }
+
+        .price {
+          font-size: 1.3rem;
+          font-weight: bold;
+          color: #ff7b00;
+          margin-bottom: 15px;
+        }
+
+        .view-button {
+          display: inline-block;
+          padding: 10px 25px;
+          background: #333;
+          color: white;
+          border-radius: 30px;
+          text-decoration: none;
+          font-weight: bold;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background: linear-gradient(to right, #ff7b00, #ff0058);
+          }
+        }
+      }
+    }
+  }
+}
+
+/* قسم المميزات */
+.about-section {
+  padding: 80px 0;
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), center/cover;
+  text-align: center;
+  position: relative;
+
+  .about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1.5rem;
+      color: #333;
+      
+      span {
+        color: #ff7b00;
+      }
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #444;
+      margin-bottom: 2.5rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+
+      .feature {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: translateY(-10px);
+        }
+
+        .icon {
+          font-size: 2.5rem;
+          color: #ff7b00;
+          margin-bottom: 20px;
+        }
+
+        h3 {
+          font-size: 1.4rem;
+          margin-bottom: 15px;
+          color: #333;
+        }
+
+        p {
+          font-size: 1rem;
+          color: #666;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+/* تأثيرات الحركة */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* التكيف مع الشاشات الصغيرة */
+@media (max-width: 768px) {
+  .hero-header {
+    height: 60vh;
+    
+    .hero-content {
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      p {
+        font-size: 1.1rem;
+      }
+    }
+  }
+  
+  .featured-section {
+    padding: 50px 0;
+    
+    .section-title h2 {
+      font-size: 2rem;
+    }
+  }
+  
+  .about-section {
+    padding: 50px 0;
+    
+    .about-content h1 {
+      font-size: 2.2rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-header {
+    height: 70vh;
+    
+    .hero-content {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  }
+  
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+}

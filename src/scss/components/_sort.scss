@@ -1,0 +1,169 @@
+// _sort.scss
+
+@import '../variables';
+
+.sort {
+  position: relative;
+  z-index: 10;
+
+  &__label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+
+      svg {
+        transform: rotate(180deg);
+      }
+
+      span {
+        color: darken($orange, 10%);
+        border-bottom-color: darken($orange, 10%);
+      }
+    }
+
+    svg {
+      margin-right: 10px;
+      width: 16px;
+      height: 16px;
+      transition: transform 0.3s ease;
+
+      path {
+        fill: $orange;
+        transition: fill 0.3s ease;
+      }
+    }
+
+    b {
+      margin-right: 10px;
+      font-weight: 600;
+      color: #333;
+      font-size: 15px;
+    }
+
+    span {
+      color: $orange;
+      border-bottom: 1px dashed $orange;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 15px;
+      transition: all 0.3s ease;
+    }
+  }
+
+  &__popup {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    margin-top: 10px;
+    background: #ffffff;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 8px 0;
+    width: 180px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 100;
+
+    &--visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      right: 20px;
+      width: 16px;
+      height: 16px;
+      background: #fff;
+      transform: rotate(45deg);
+      box-shadow: -3px -3px 5px rgba(0, 0, 0, 0.05);
+      z-index: -1;
+    }
+
+    ul {
+      overflow: hidden;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        padding: 12px 24px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        &::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 3px;
+          height: 0;
+          background: $orange;
+          border-radius: 0 3px 3px 0;
+          transition: all 0.3s ease;
+        }
+
+        &:hover {
+          background: rgba($orange, 0.05);
+          padding-left: 28px;
+
+          &::before {
+            height: 60%;
+          }
+        }
+
+        &.active {
+          font-weight: 700;
+          color: $orange;
+          background: rgba($orange, 0.08);
+          padding-left: 28px;
+
+          &::before {
+            height: 60%;
+            background: $orange;
+          }
+
+          &::after {
+            content: '✓';
+            margin-left: auto;
+            color: $orange;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+
+  // تنسيق للشاشات الصغيرة
+  @media (max-width: 768px) {
+    &__label {
+      b {
+        display: none;
+      }
+
+      svg {
+        margin-right: 0;
+      }
+    }
+
+    &__popup {
+      width: 160px;
+      right: -10px;
+    }
+  }
+}

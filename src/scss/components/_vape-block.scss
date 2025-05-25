@@ -1,0 +1,209 @@
+// _vape-block.scss
+
+@import '../variables';
+
+.vape-block {
+  width: 280px;
+  text-align: center;
+  margin-bottom: 65px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  padding: 20px;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+
+    .vape-block__image {
+      transform: scale(1.05);
+    }
+  }
+
+  &__image {
+    width: 220px;
+    height: 220px;
+    object-fit: contain;
+    margin: 0 auto 20px;
+    transition: transform 0.3s ease;
+    border-radius: 10px;
+    background: #f9f9f9;
+    padding: 15px;
+  }
+
+  &__title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 1.2rem;
+    color: #333;
+    min-height: 3.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__selector {
+    display: flex;
+    background-color: #f8f8f8;
+    border-radius: 12px;
+    flex-direction: column;
+    padding: 12px;
+    transition: all 0.3s ease;
+    margin-bottom: 1.5rem;
+
+    &:hover {
+      background-color: darken(#f8f8f8, 2%);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    ul {
+      display: flex;
+      flex: 1;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      &:first-of-type {
+        margin-bottom: 8px;
+      }
+
+      li {
+        padding: 8px 5px;
+        flex: 1;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.85rem;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        @include noselect();
+
+        &:hover:not(.active) {
+          background: rgba(255, 255, 255, 0.7);
+        }
+
+        &.active {
+          background: #ffffff;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+          color: $orange;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+  }
+
+  &__price {
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: #333;
+    letter-spacing: 0.015em;
+
+    &::before {
+      content: 'EGP';
+      font-size: 0.9rem;
+      margin-right: 4px;
+      color: #777;
+      font-weight: 600;
+    }
+  }
+
+  // زر الإضافة
+  &__add-btn {
+    background: linear-gradient(135deg, #ff7b00 0%, #ff0058 100%);
+    border: none;
+    border-radius: 30px;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 123, 0, 0.4);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+      path {
+        fill: white;
+      }
+    }
+
+    span {
+      &:first-child {
+        font-weight: 600;
+      }
+    }
+
+    i {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      margin-left: 8px;
+      font-style: normal;
+      font-size: 0.8rem;
+    }
+  }
+
+  // علامة مميزة للمنتجات الجديدة
+  &__badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: $orange;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 0 3px 8px rgba(255, 123, 0, 0.3);
+  }
+
+  // تنسيق للشاشات الصغيرة
+  @media (max-width: 768px) {
+    width: 240px;
+    margin-bottom: 40px;
+    padding: 15px;
+
+    &__image {
+      width: 180px;
+      height: 180px;
+    }
+
+    &__title {
+      font-size: 1.1rem;
+    }
+
+    &__price {
+      font-size: 1.2rem;
+    }
+
+    &__add-btn {
+      padding: 0.5rem 1rem;
+      font-size: 0.8rem;
+    }
+  }
+}

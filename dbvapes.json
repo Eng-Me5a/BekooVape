@@ -1,0 +1,38 @@
+{
+  "vapes": [
+    {
+      "id": 1,
+      "title": "Vape drag 4",
+      "price": 1520,
+      "imageUrl": "https://el-clan.com/cdn/shop/files/Voopoo-Drag-4-Kit-Gunmetal-Tropical-Orange.png?v=1731619838",
+      "sizes": [600, 1200],
+      "types": ["vape"]
+    },
+    {
+      "id": 2,
+      "title": "xlim sq pro2 Pod",
+      "price": 990,
+      "imageUrl": "https://el-clan.com/cdn/shop/files/Oxva-XLIM-SQ-Pro-2-Celadon-Marble-217967-7-2_800x800_df14a3c1-49c2-44b9-be3b-49414ee1b6f2.webp?v=1745407171",
+      "sizes": [800],
+      "types": ["pod"]
+    },
+    {
+      "id": 3,
+      "title": "Strawberry E-liquid Tokyo",
+      "price": 250,
+      "imageUrl": "https://el-clan.com/cdn/shop/files/tokyo-classic-series-strawberry-watermelon-1-510x510.jpg?v=1732795144",
+      "sizes": [30],
+      "types": ["eliquid"]
+    },
+    {
+      "id": 4,
+      "title": "XLIM CARTRIDGE POD",
+      "price": 80,
+      "imageUrl": "https://cdn.salla.sa/yBlqN/SjgdyqVnwJKmVWCkAnuXm3H9dYpr9bB0JyITn73g.png",
+      "sizes": [],
+      "types": ["coil"]
+    }
+  ]
+}
+
+
