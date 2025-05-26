@@ -38,7 +38,7 @@ const VapeBlock: React.FC<VapeBlockProps> = ({ id, title, price, imageUrl, }) =>
       </Link>
       </div>
       <div className="vape-block__bottom">
-        <div className="vape-block__price"> {price} £</div>
+        <div className="vape-block__price"> {price} </div>
         <button onClick={onClickAdd} className="button button--outline button--add">
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
             <path

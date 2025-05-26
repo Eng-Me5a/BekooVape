@@ -8,10 +8,13 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config(); // تحميل متغيرات البيئة من .env
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 8080;
+
 
 // مفتاح JWT السري من ملف .env
 const JWT_SECRET = process.env.JWT_SECRET;
+console.log("JWT_SECRET:", JWT_SECRET); // للتأكد من قراءته
+
 
 app.use(cors());
 app.use(express.json());
@@ -42,7 +45,9 @@ app.post("/api/orders", (req, res) => {
   newOrder.status = "pending";
   orders.push(newOrder);
   saveOrders(orders);
-  res.status(201).json({ message: "Order placed successfully", order: newOrder });
+  res
+    .status(201)
+    .json({ message: "Order placed successfully", order: newOrder });
 });
 
 // 🔐 تسجيل دخول الأدمن
@@ -55,7 +60,9 @@ app.post("/api/admin-login", (req, res) => {
   if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
     // تأكد أن المفتاح السري موجود
     if (!JWT_SECRET) {
-      return res.status(500).json({ message: "Server misconfigured: JWT_SECRET not set." });
+      return res
+        .status(500)
+        .json({ message: "Server misconfigured: JWT_SECRET not set." });
     }
 
     const token = jwt.sign({ username }, JWT_SECRET, { expiresIn: "1h" });
@@ -72,7 +79,7 @@ app.patch("/api/orders/:id", (req, res) => {
   if (!status) return res.status(400).json({ message: "Missing status field" });
 
   const orders = readOrders();
-  const index = orders.findIndex(order => order.id === id);
+  const index = orders.findIndex((order) => order.id === id);
   if (index === -1) return res.status(404).json({ message: "Order not found" });
 
   orders[index].status = status;
@@ -84,7 +91,7 @@ app.patch("/api/orders/:id", (req, res) => {
 app.delete("/api/orders/:id", (req, res) => {
   const { id } = req.params;
   const orders = readOrders();
-  const index = orders.findIndex(order => order.id === id);
+  const index = orders.findIndex((order) => order.id === id);
   if (index === -1) return res.status(404).json({ message: "Order not found" });
 
   orders.splice(index, 1);

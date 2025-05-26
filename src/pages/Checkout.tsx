@@ -23,44 +23,43 @@ export const Checkout: React.FC = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+  const API_URL = process.env.REACT_APP_API_URL || "https://beko-vape-server-production.up.railway.app/api";
 
-  const orderData = {
-    customer: formData,
-    items,
-    totalPrice,
-    date: new Date().toISOString(),
-  };
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-  setLoading(true);
-  setErrorMessage("");
-  setSuccessMessage("");
+    const orderData = {
+      customer: formData,
+      items,
+      totalPrice,
+      date: new Date().toISOString(),
+    };
 
-  try {
-    const response = await fetch("http://localhost:5000/api/orders", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(orderData),
-    });
+    setLoading(true);
+    setErrorMessage("");
+    setSuccessMessage("");
 
-    // قراءة الرد JSON حتى لو كان خطأ
-    const data = await response.json();
+    try {
+      const response = await fetch(`${API_URL}/orders`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(orderData),
+      });
 
-    if (response.ok) {
-      setSuccessMessage("Order confirmed! Thank you.");
-      // هنا يمكنك تفريغ السلة أو إعادة التوجيه حسب رغبتك
-    } else {
-      // عرض رسالة الخطأ المفصلة من السيرفر لو موجودة
-      setErrorMessage(data.message || "Failed to place order.");
+      const data = await response.json();
+
+      if (response.ok) {
+        setSuccessMessage("Order confirmed! Thank you.");
+        // هنا ممكن تفرغ السلة لو حابب
+      } else {
+        setErrorMessage(data.message || "Failed to place order.");
+      }
+    } catch (error: any) {
+      setErrorMessage("Error occurred while placing order: " + error.message);
+    } finally {
+      setLoading(false);
     }
-  } catch (error: any) {
-    setErrorMessage("Error occurred while placing order: " + error.message);
-  } finally {
-    setLoading(false);
-  }
-};
-
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>

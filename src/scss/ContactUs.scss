@@ -1,0 +1,239 @@
+// متغيرات الألوان
+$primary-color: #ff7b00;
+$secondary-color: #ff0058;
+$text-color: #000000;
+$light-gray: #f9f9f9;
+$border-color: #e0e0e0;
+$facebook-color: #1877f2;
+$instagram-color: #c13584;
+$success-color: #4caf50;
+$error-color: #f44336;
+
+// تأثيرات الحركة
+@mixin transition($property: all, $duration: 0.3s, $ease: ease-in-out) {
+  transition: $property $duration $ease;
+}
+
+@mixin box-shadow($x: 0, $y: 2px, $blur: 10px, $spread: 0, $color: rgba(0, 0, 0, 0.1)) {
+  box-shadow: $x $y $blur $spread $color;
+}
+
+
+
+// لوجو الزاوية العلوية اليسرى
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 100px;
+  z-index: 10;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+// إعدادات عامة
+.contact-container {
+  max-width: 1200px;
+  margin: 100px auto 40px;
+  padding: 0 20px;
+  direction: rtl;
+  text-align: right;
+  @media (max-width: 768px) {
+    padding: 0 15px;
+  }
+}
+
+.contact-title {
+  text-align: center;
+  margin-bottom: 40px;
+  color: $primary-color;
+  font-size: 2.5rem;
+  position: relative;
+  padding-bottom: 15px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to left, $primary-color, $secondary-color);
+  }
+}
+
+.contact-content {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    gap: 20px;
+  }
+}
+
+// قسم معلومات الاتصال
+.contact-info {
+  flex: 1 1 300px;
+  min-width: 280px;
+  padding: 30px;
+  border-radius: 8px;
+  @include box-shadow;
+  
+ background: linear-gradient( rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7) ), url(../assets/img/vape-logo.png )no-repeat center center; 
+  background-size: contain;
+  font-family: 'Tajawal', 'Arial', sans-serif;  
+  h2 {
+    color: $primary-color;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    border-bottom: 2px solid $border-color;
+    padding-bottom: 10px;
+  }
+
+  .contact-info-item {
+    margin-bottom: 20px;
+
+    h3 {
+      color: $secondary-color;
+      margin-bottom: 8px;
+      font-size: 1.2rem;
+    }
+
+    p, li {
+      color: $text-color;
+      line-height: 1.8;
+    }
+
+    ul {
+      padding-right: 20px;
+      margin: 10px 0;
+
+      li {
+        margin-bottom: 8px;
+        position: relative;
+
+        &::before {
+          content: "•";
+          color: $primary-color;
+          font-weight: bold;
+          display: inline-block;
+          width: 1em;
+          margin-right: -1em;
+        }
+      }
+    }
+  }
+}
+
+// وسائل التواصل الاجتماعي
+.social-media {
+  margin-top: 30px;
+
+  h3 {
+    color: $secondary-color;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+
+    @media (max-width: 480px) {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    li {
+      margin: 0;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      @include transition;
+      font-weight: bold;
+
+      &:hover {
+        transform: translateY(-3px);
+        @include box-shadow(0, 4px, 10px, 0, rgba(0,0,0,0.1));
+      }
+
+      i {
+        font-size: 1.3rem;
+      }
+    }
+
+    .facebook {
+      background: rgba($facebook-color, 0.1);
+      color: $facebook-color;
+
+      &:hover {
+        background: rgba($facebook-color, 0.2);
+      }
+    }
+
+    .instagram {
+      background: rgba($instagram-color, 0.1);
+      color: $instagram-color;
+
+      &:hover {
+        background: rgba($instagram-color, 0.2);
+      }
+    }
+  }
+}
+
+// أيقونات
+.icon-instagram::before { content: "\f16d"; font-family: "Font Awesome 5 Brands"; }
+.icon-facebook::before { content: "\f09a"; font-family: "Font Awesome 5 Brands"; }
+
+// تأثيرات الحركة
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// التكيف مع الشاشات الصغيرة
+@media (max-width: 768px) {
+  .contact-info, .contact-form {
+    padding: 25px;
+  }
+
+  .contact-title {
+    font-size: 2rem;
+
+    &::after {
+      width: 60px;
+    }
+  }
+
+  .logo {
+    width: 80px;
+    top: 15px;
+    left: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-content {
+    flex-direction: column;
+  }
+
+  .contact-info, .contact-form {
+    width: 100%;
+    min-width: auto;
+  }
+}

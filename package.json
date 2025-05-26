@@ -1,8 +1,9 @@
 {
-  "name": "Beko_Vape_store_v1",
+  "name": "beko_vape_store_v1",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.7.2",
     "@reduxjs/toolkit": "^1.9.7",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -17,8 +18,10 @@
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
+    "faker": "^5.5.3",
     "jsonwebtoken": "^9.0.2",
     "lodash.debounce": "^4.0.8",
+    "lucide-react": "^0.511.0",
     "puppeteer": "^24.9.0",
     "qs": "^6.11.2",
     "react": "^18.2.0",
@@ -65,5 +68,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "🚬 Beko Vape Store v1 Beko Vape Store هو متجر إلكتروني متكامل لمنتجات الـ فيب، مصمم باستخدام تقنيات حديثة لتوفير تجربة مستخدم سلسة واحترافية. يضم المتجر مجموعة متنوعة من الأجهزة والسوائل والملحقات الخاصة بالفيب، ويحتوي على لوحة تحكم للإدارة لتتبع الطلبات والتحكم بالمحتوى.",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

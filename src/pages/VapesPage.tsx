@@ -2,45 +2,43 @@
 import { vapes } from "../data/vapesData";
 import { VapeBlock } from "../components/vapeBlock";
 import React, { useState, useEffect } from "react";
+import "../scss/components/_vape-block.scss";
+import "../scss/components/_filter-buttons.scss"; // تأكد من استيراد ملف التنسيق
+
 const VapesPage: React.FC = () => {
   const [vapesList, setVapesList] = useState(vapes);
-  const [typeFilter, setTypeFilter] = useState(""); // ✅ افتراضيًا كل المنتجات
+  const [typeFilter, setTypeFilter] = useState("");
 
   useEffect(() => {
     if (typeFilter === "") {
-      setVapesList(vapes); // عرض كل المنتجات
+      setVapesList(vapes);
     } else {
       const filtered = vapes.filter((item) => item.type === typeFilter);
       setVapesList(filtered);
     }
   }, [typeFilter]);
 
+  const filterTypes = [
+    { id: "", label: "كل المنتجات" },
+    { id: "vape", label: "فيب" },
+    { id: "liquid", label: "سوائل" },
+    { id: "accessory", label: "إكسسوارات" }
+  ];
+
   return (
     <div className="container">
-      <h2 className="content__title">Products Type: {typeFilter || "All"}</h2>
+      <h2 className="content__title">المنتجات: {typeFilter ? filterTypes.find(t => t.id === typeFilter)?.label : "الكل"}</h2>
 
-      <div style={{ marginBottom: 20 }}>
-        {["vape", "liquid", "accessory", "all"].map((type) => (
+      <div className="filter-buttons">
+        {filterTypes.map((type) => (
           <button
-            key={type}
-            onClick={() => setTypeFilter(type === "all" ? "" : type)}
-            style={{
-              marginRight: 10,
-              backgroundColor:
-                typeFilter === type || (type === "all" && typeFilter === "")
-                  ? "#4caf50"
-                  : "#ddd",
-              color:
-                typeFilter === type || (type === "all" && typeFilter === "")
-                  ? "white"
-                  : "black",
-              padding: "8px 16px",
-              border: "none",
-              borderRadius: 4,
-              cursor: "pointer",
-            }}
+            key={type.id || "all"}
+            onClick={() => setTypeFilter(type.id)}
+            className={`filter-buttons__button ${
+              typeFilter === type.id ? "filter-buttons__button--active" : ""
+            }`}
           >
-            {type === "all" ? "كل المنتجات" : type}
+            {type.label}
           </button>
         ))}
       </div>
@@ -49,11 +47,11 @@ const VapesPage: React.FC = () => {
         {vapesList.length > 0 ? (
           vapesList.map((vape) => <VapeBlock key={vape.id} {...vape} />)
         ) : (
-          <p>لا توجد منتجات لهذا النوع.</p>
+          <p className="no-products">لا توجد منتجات لهذا النوع.</p>
         )}
       </div>
     </div>
   );
 };
-  
+
 export default VapesPage;

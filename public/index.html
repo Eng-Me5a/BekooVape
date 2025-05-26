@@ -1,26 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="../src/assets/img/vape-logo.png" />
+    <link rel="icon" href="../src/assets/img/vape-logo.png" type="image/png" />
+    
+    <!-- Meta Tags الأساسية -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta name="description" content="Web site created using create-react-app" />
+    <meta name="description" content="متجر Bekoo Vape - أفضل منتجات الفيب والسجائر الإلكترونية في مصر بأسعار تنافسية وجودة عالية" />
+    <meta name="keywords" content="فيب, سجائر إلكترونية, vape, بخاخات, نكهات فيب, مصر, متجر فيب" />
+    <meta name="author" content="Bekoo Vape" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.bekoovape.com/" />
+    <meta property="og:title" content="Bekoo Vape - متجر الفيب الرائد في مصر" />
+    <meta property="og:description" content="اكتشف أفضل منتجات الفيب والسجائر الإلكترونية في مصر مع Bekoo Vape" />
+    <meta property="og:image" content="https://www.bekoovape.com/images/og-image.jpg" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://www.bekoovape.com/" />
+    <meta property="twitter:title" content="Bekoo Vape - متجر الفيب الرائد في مصر" />
+    <meta property="twitter:description" content="اكتشف أفضل منتجات الفيب والسجائر الإلكترونية في مصر مع Bekoo Vape" />
+    <meta property="twitter:image" content="https://www.bekoovape.com/images/twitter-image.jpg" />
+    
+    <!-- روابط الخطوط -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet" />
-
-  <title>Bekoo Vape</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Store",
+      "name": "Bekoo Vape",
+      "description": "متجر متخصص في بيع منتجات الفيب والسجائر الإلكترونية في مصر",
+      "url": "https://www.bekoovape.com",
+      "logo": "https://www.bekoovape.com/images/logo.png",
+      "telephone": "+201090633096",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "شارع المحكمة أمام البنك الأهلي",
+        "addressLocality": "بيلا",
+        "addressRegion": "كفر الشيخ",
+        "postalCode": "33511",
+        "addressCountry": "EG"
+      },
+      "openingHours": "Mo,Tu,We,Th,Fr,Sa,Su 09:00-04:00",
+      "priceRange": "$$"
+    }
+    </script>
+    
+    <title>Bekoo Vape | متجر الفيب والسجائر الإلكترونية الرائد في مصر</title>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.bekoovape.com" />
   </head>
   <body>
     <div id="root"></div>
-<script>
-document.querySelector('.header__mobile-toggle').addEventListener('click', function() {
-  this.classList.toggle('active');
-  document.querySelector('.header__nav').classList.toggle('active');
-});
-</script>
+    
+    <!-- تحسينات الأداء -->
+    <script>
+      // تتبع أحداث مهمة
+      document.addEventListener('DOMContentLoaded', function() {
+        // تتبع تفاعلات المستخدم
+        document.querySelector('.header__mobile-toggle')?.addEventListener('click', function() {
+          this.classList.toggle('active');
+          document.querySelector('.header__nav')?.classList.toggle('active');
+          
+          // تتبع حدث القائمة المتنقلة
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'mobile_menu_toggle', {
+              'event_category': 'engagement',
+              'event_label': 'Mobile Menu'
+            });
+          }
+        });
+        
+        // تحميل العناصر غير الحرجة بشكل متأخر
+        window.addEventListener('load', function() {
+          const lazyImages = [].slice.call(document.querySelectorAll('img.lazy'));
+          if ('IntersectionObserver' in window) {
+            let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+              entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                  let lazyImage = entry.target;
+                  lazyImage.src = lazyImage.dataset.src;
+                  lazyImage.classList.remove('lazy');
+                  lazyImageObserver.unobserve(lazyImage);
+                }
+              });
+            });
+            
+            lazyImages.forEach(function(lazyImage) {
+              lazyImageObserver.observe(lazyImage);
+            });
+          }
+        });
+      });
+    </script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
   </body>
 </html>

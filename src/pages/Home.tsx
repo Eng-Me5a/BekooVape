@@ -43,7 +43,7 @@ export const Home: React.FC = () => {
       <section className="hero-header">
         <div className="hero-content">
           <h1>اكتشف عالم <span>الفيب المتميز</span></h1>
-          <p>أجود أنواع السجائر الإلكترونية والعصائر بأفضل الأسعار وضمان الجودة</p>
+          <p>أجود أنواع السجائر الإلكترونية والليكويد بأفضل الأسعار وضمان الجودة</p>
           <button className="cta-button" onClick={() => navigate("/vapes")}>
             تصفح المنتجات
           </button>
@@ -67,7 +67,7 @@ export const Home: React.FC = () => {
                   <div className="featured-info">
                     <h3>{product.title}</h3>
                     <p>{product.description}</p>
-                    <div className="price">{product.price} £</div>
+                    <div className="price">{product.price} EGP</div>
                     <button
                       onClick={() => onClickAdd(product)}
                       className="button button--outline button--add"

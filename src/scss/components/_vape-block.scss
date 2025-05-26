@@ -15,7 +15,7 @@
 
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.12);
 
     .vape-block__image {
       transform: scale(1.05);
@@ -29,7 +29,7 @@
     margin: 0 auto 20px;
     transition: transform 0.3s ease;
     border-radius: 10px;
-    background: #f9f9f9;
+    background: #ffffff;
     padding: 15px;
   }
 
@@ -46,7 +46,7 @@
 
   &__selector {
     display: flex;
-    background-color: #f8f8f8;
+    background-color: #ffffff;
     border-radius: 12px;
     flex-direction: column;
     padding: 12px;
@@ -54,7 +54,7 @@
     margin-bottom: 1.5rem;
 
     &:hover {
-      background-color: darken(#f8f8f8, 2%);
+      background-color: darken(#ffffff, 2%);
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
 
@@ -180,13 +180,50 @@
     font-weight: 700;
     text-transform: uppercase;
     box-shadow: 0 3px 8px rgba(255, 123, 0, 0.3);
-  }
+  }// FilterButtons.module.css
 
+// ملف _filter-buttons.scss
+.filter-buttons {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 12px;
+
+  &__button {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    background-color: #ddd;
+    color: #333;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #bbb;
+    }
+
+    &--active {
+      background-color: #4caf50;
+      color: white;
+      box-shadow: 0 4px 8px rgba(76, 175, 80, 0.4);
+    }
+  }
+}
+.no-products {
+  text-align: center;
+  padding: 20px;
+  color: #666;
+  font-size: 1.2rem;
+  width: 100%;
+}
   // تنسيق للشاشات الصغيرة
   @media (max-width: 768px) {
     width: 240px;
     margin-bottom: 40px;
     padding: 15px;
+        margin-left: auto;
+    margin-right: auto;
 
     &__image {
       width: 180px;
