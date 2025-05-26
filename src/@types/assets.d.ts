@@ -10,3 +10,8 @@ declare module '*.scss' {
   const content: any;
   export default content;
 }
+// custom.d.ts
+declare module "*.mp4" {
+  const src: string;
+  export default src;
+}

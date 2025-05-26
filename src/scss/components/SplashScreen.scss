@@ -1,0 +1,44 @@
+
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 9999;
+
+.smoke-video {
+  position: absolute;
+  top: 50%;
+  left: 55%; // في الشاشات الكبيرة
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: auto;
+  min-height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+  z-index: 1;
+  pointer-events: none;
+
+  @media (max-width: 768px) {
+    left: 45%; // رجعه للنص في الموبايل
+    width: 100%; // خليه مناسب للموبايل
+  }
+}
+
+  .logo {
+    display: flex;
+    max-width: 60vw;
+    max-height: 60vh;
+    width: 1000px;
+    height: 1000px;
+    z-index: 2;
+    object-fit: contain;
+    position: absolute;
+    top: 20%;
+    left: 20%;
+  }
+  
+}
